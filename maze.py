@@ -3,21 +3,31 @@
 ## Imports
 import random
 import time
+import os
+#import numpy as np
 from colorama import init
 from colorama import Fore, Back, Style
 
-## Functions
+# Functions
+
+clear = lambda : os.system('clear')
+
 def printMaze(maze):
 	for i in range(0, height):
 		for j in range(0, width):
 			if (maze[i][j] == 'u'):
+				#print(Fore.WHITE + str(maze[i][j]), end=" ")
 				print(Fore.WHITE + str(maze[i][j]), end=" ")
+
 			elif (maze[i][j] == 'c'):
-				print(Fore.GREEN + str(maze[i][j]), end=" ")
+				#print(Fore.GREEN + str(maze[i][j]), end=" ")
+				print(Fore.GREEN + "#", end=" ")
+
 			else:
-				print(Fore.RED + str(maze[i][j]), end=" ")
-			
-		print('\n')
+				#print(Fore.RED + str(maze[i][j]), end=" ")
+				print(Fore.RED + "o", end=" ")
+
+		print('')
 
 # Find number of surrounding cells
 def surroundingCells(rand_wall):
@@ -39,8 +49,8 @@ def surroundingCells(rand_wall):
 wall = 'w'
 cell = 'c'
 unvisited = 'u'
-height = 11
-width = 27
+height = 15
+width = 15
 maze = []
 
 # Initialize colorama
@@ -115,7 +125,6 @@ while (walls):
 						maze[rand_wall[0]][rand_wall[1]-1] = 'w'
 					if ([rand_wall[0], rand_wall[1]-1] not in walls):
 						walls.append([rand_wall[0], rand_wall[1]-1])
-			
 
 			# Delete wall
 			for wall in walls:
@@ -255,3 +264,8 @@ for i in range(width-1, 0, -1):
 
 # Print final maze
 printMaze(maze)
+print('\n')
+print(type(maze))
+print('w c W C')
+print(maze)
+#print(np.matrix(maze))
