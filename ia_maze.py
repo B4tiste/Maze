@@ -59,6 +59,8 @@ cell = 'c'
 unvisited = 'u'
 height = int(input('Hauteur : '))
 width = int(input('Largeur : '))
+solutions = int(input('Une ou Plusieurs Solutions [0/1] : '))
+# solutions = 0
 maze = []
 
 # Initialize colorama
@@ -277,6 +279,8 @@ print(Fore.WHITE)
 
 bin_maze = np.zeros((height, width))
 
+rdm = 0
+
 for t in range(height):
     for u in range(width):
         """
@@ -289,6 +293,10 @@ for t in range(height):
             bin_maze[t, u] = 1
         if maze[t][u] == ('c'):
             bin_maze[t, u] = 0
+        if solutions == 1 and t > 0 and u > 0 and t < height-1 and u < width-2:
+            rdm = random.randint(1, 10)
+            if rdm == 1:
+                bin_maze[t, u] = 0
 
 """
 print(np.matrix(bin_maze))
