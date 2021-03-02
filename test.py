@@ -124,9 +124,13 @@ images[0].save('gif_maze.gif',
                save_all=True, append_images=images[1:],
                optimize=False, duration=1, loop=0)
 
-
+"""
 f_maze = open('txt_maze.txt', 'w')
 
 f_maze.write(str(np.matrix(a)))
 
 f_maze.close()
+"""
+
+print(type(a))
+print(type(m))

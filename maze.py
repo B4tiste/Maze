@@ -268,30 +268,38 @@ for i in range(width-1, 0, -1):
 print('\n')
 printMaze(maze)
 print(Fore.WHITE)
-print(type(maze))
+# print(type(maze))
 # print(maze)
 
-bin_maze = [[0]*width]*height
+bin_maze = np.zeros((height, width))
 
-for t in range(10):
-    for u in range(20):
+for t in range(height):
+    for u in range(width):
+        """
         if t == 0:
             print(t)
             print(u)
             print(maze[t][u] == 'w')
-            print(maze[t][u] == 'c')
-        if maze[t][u] == 'w':
-            bin_maze[t][u] = 1
-        if maze[t][u] == 'c':
-            bin_maze[t][u] = 0
+            print(maze[t][u] == 'c')"""
+        if maze[t][u] == ('w'):
+            bin_maze[t, u] = 1
+        if maze[t][u] == ('c'):
+            bin_maze[t, u] = 0
 
-
+"""
 print(np.matrix(bin_maze))
 print(np.matrix(maze))
+"""
+print(type(bin_maze))
+list_bin_maze = list(bin_maze)
+print(type(list_bin_maze))
+
 f_maze = open('txt_maze.txt', 'w')
 
-f_maze.write(str(np.matrix(maze)))
-f_maze.write('\n')
-f_maze.write(str(np.matrix(bin_maze)))
+# f_maze.write(str(np.matrix(maze)))
+# f_maze.write('\n')
+f_maze.write(str(bin_maze).replace(".", ""))
 
 f_maze.close()
+
+a = list_bin_maze
