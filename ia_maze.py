@@ -15,7 +15,7 @@ images = []
 # Functions
 
 
-def clear(): return os.system('clear')
+def clear(): return os.system('cls')
 
 
 def printMaze(maze):
@@ -59,8 +59,8 @@ cell = 'c'
 unvisited = 'u'
 height = int(input('Hauteur : '))
 width = int(input('Largeur : '))
-solutions = int(input('Une ou Plusieurs Solutions [0/1] : '))
-# solutions = 0
+#solutions = int(input('Une ou Plusieurs Solutions [0/1] : '))
+solutions = 0
 maze = []
 
 # Initialize colorama
@@ -395,6 +395,7 @@ for i in range(len(a)):
     m.append([])
     for j in range(len(a[i])):
         m[-1].append(0)
+
 i, j = start
 m[i][j] = 1
 
@@ -434,10 +435,9 @@ for i in range(10):
         draw_matrix(a, m)
 
 
-"""
-print_m(m)
-print(the_path)
-"""
+# print_m(m)
+# print(np.matrix(the_path))
+
 
 GIF_NAME = 'gif_maze.gif'
 MP4_NAME = 'mp4_maze.mp4'
@@ -446,12 +446,17 @@ images[0].save(GIF_NAME,
                save_all=True, append_images=images[1:],
                optimize=False, duration=1, loop=0)
 
+# images[0].save('image.jpeg')
+
+print("\tTaille : " + str(height) + "x" + str(width))
+print('')
 print("GIF de la solution sauvegardé sous le nom : " + GIF_NAME)
 
 clip = mp.VideoFileClip(GIF_NAME)
 clip.write_videofile(MP4_NAME)
 
 print("Video .mp4 de la solution sauvegardé sous le nom : " + MP4_NAME)
+
 
 """
 f_maze = open('txt_maze.txt', 'w')
